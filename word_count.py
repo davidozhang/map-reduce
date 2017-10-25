@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import re
+import sys
 
 from map_reduce import MapReduce
 from read import read
@@ -15,4 +16,7 @@ class WordCounter(MapReduce):
         return key, sum(entries)
 
 if __name__ == '__main__':
-    wc = WordCounter(read('word_count.txt'), output=True)
+    if len(sys.argv) < 2:
+        raise Exception('usage: python word_count.py [file_name]')
+
+    wc = WordCounter(read(sys.argv[1]), output=True)
