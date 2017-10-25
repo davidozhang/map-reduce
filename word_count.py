@@ -15,4 +15,4 @@ class WordCounter(MapReduce):
         return key, sum(entries)
 
 if __name__ == '__main__':
-    wc = WordCounter(read('word_count.txt'))
+    wc = WordCounter(read('word_count.txt'), output=True)
